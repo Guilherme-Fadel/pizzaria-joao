@@ -37,9 +37,13 @@
                                 <td>
                                     <form action="process/orders.php" method="POST" class="form-group update-form">
                                     <input type="hidden" name="type" value="update">
-                                    <input type="hidden" name="id" value="1">
+                                    <input type="hidden" name="id" value="<?= $pizza["id"] ?>">
                                     <select name="status" class="form-control status-input">
+                                        <?php foreach ($status as $s): ?>
+                                            <option value="<?= $s["id"]?>" <?php echo ($s["id"] == $pizza["status"]) ? "selected" : ""; ?> ><?= $s["tipo"] ?></option>
+                                        <?php endforeach; ?>
                                         <option value="">Entrega</option>
+
                                     </select>
                                     <button type="submit" class="update-btn">
                                         <i class="fas fa-sync-alt"></i>
@@ -49,7 +53,7 @@
                                 <td>
                                     <form action="process/orders.php" method="POST">
                                     <input type="hidden" name="type" value="delete">
-                                    <input type="hidden" name="id" value="1">
+                                    <input type="hidden" name="id" value="<?=$pizza["id"]?>">
                                     <button type="submit" class="delete-btn">
                                         <i class="fas fa-times"></i>
                                     </button>
